@@ -22,8 +22,5 @@ public class Aeronave {
     void ativar() {
         ativo = true;
     }
- void atualizar() {
-        return;
- }
 
 }
