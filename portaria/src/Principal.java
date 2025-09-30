@@ -5,7 +5,7 @@ public class Principal {
         novoVisitante.idade = 10;
 
         CadastroPortaria cadastroPortaria = new CadastroPortaria();
-        cadastroPortaria.cadastrar(novoVisitante, 10);
+        cadastroPortaria.cadastrar(novoVisitante,1);
 
     }
 }
