@@ -7,9 +7,4 @@ public class Calendario {
        return meses[numeroMes - 1];
     }
 
-    public static void main(String[] args) {
-        String mes = Calendario.obterNomeMes(1);
-
-        System.out.println(mes);
-    }
 }
