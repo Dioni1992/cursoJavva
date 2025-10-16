@@ -1,41 +1,29 @@
+import java.util.Arrays;
+
 public class Cardapio {
-    public Cardapio() {
-        itens = new ItemCardapio[0];
-    }
-    ItemCardapio[] itens;
+
+    ItemCardapio[] itens = new ItemCardapio[0];
 
     void adicionarItem(ItemCardapio item) {
-        ItemCardapio[] novoArray = new ItemCardapio[itens.length + 1];
-
-        for (int i = 0; i < itens.length; i++) {
-
-            novoArray[i] = itens[i];
-
-        }
-        novoArray[novoArray.length - 1] = item;
-        itens = novoArray;
+        itens = Arrays.copyOf(itens, itens.length + 1);
+        itens[itens.length - 1] = item;
     }
 
     void removerItem(int indice) {
-     ItemCardapio[] novoItem = new ItemCardapio[itens.length - 1];
+        ItemCardapio[] novosItens = new ItemCardapio[itens.length - 1];
 
-     int j = 0;
-     for(int i = 0; i < itens.length; i++) {
-     if(i != indice){
-         novoItem[j] = itens[i];
-         j++;
-     }
-     }
-     itens = novoItem;
+        System.arraycopy(itens, 0, novosItens, 0, indice);
+        System.arraycopy(itens, indice + 1,
+                novosItens, indice, novosItens.length - indice);
+
+        itens = novosItens;
     }
 
     void imprimirItensCardapio(double precoMinimo, double precoMaximo) {
-        for(int i = 0; i < itens.length; i++){
-            if(precoMinimo <= itens[i].preco && itens[i].preco <= precoMaximo ) {
-                System.out.println(itens[i].descricao + " - R$" + itens[i].preco);
-
+        for (ItemCardapio item : itens) {
+            if (item.possuiPrecoEntre(precoMinimo, precoMaximo)) {
+                item.imprimir();
             }
         }
     }
-
 }
