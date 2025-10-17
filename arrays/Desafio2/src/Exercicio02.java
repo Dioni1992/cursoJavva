@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Exercicio02 {
 
     public static void main(String[] args) {
@@ -19,12 +21,10 @@ public class Exercicio02 {
         cardapio.adicionarItem(item2);
         cardapio.adicionarItem(item3);
 
-        cardapio.imprimirItensCardapio(80, 150);
+        ArrayList<ItemCardapio> itensBaratos = cardapio.consultarItensPorPreco(10,10);
 
-        cardapio.removerItem(0);
-
-        System.out.println("---");
-
-        cardapio.imprimirItensCardapio(0, 150);
+        for(ItemCardapio item : itensBaratos) {
+            System.out.printf("%s x R$%.2f%n", item.descricao, item.preco);
+        }
     }
 }
